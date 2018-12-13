@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command SustainabilityTools</Text>
+    <Description>Some description for SustainabilityTools</Description>
+    <Assembly>SustainabilityTools.dll</Assembly>
+    <FullClassName>SustainabilityTools.Command</FullClassName>
+    <ClientId>60555a87-18fd-445a-829b-f0d28bde4d1c</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application SustainabilityTools</Name>
+    <Assembly>SustainabilityTools.dll</Assembly>
+    <FullClassName>SustainabilityTools.App</FullClassName>
+    <ClientId>c43497fb-cb2e-478e-875b-8c847a205aaa</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
