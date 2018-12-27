@@ -5,6 +5,9 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using System.Reflection;
+using System.Windows.Media.Imaging;
+using System.IO;
 #endregion
 
 namespace SustainabilityTools
@@ -13,6 +16,31 @@ namespace SustainabilityTools
     {
         public Result OnStartup(UIControlledApplication a)
         {
+            RibbonPanel curPanel = a.CreateRibbonPanel("Sustainabilty Stuff");
+
+            string curAssemblyName = Assembly.GetExecutingAssembly().Location;
+            string curAssemblyFolder = Path.GetDirectoryName(curAssemblyName);
+            string curClassName = "SustainabilityTools.Command";
+
+            PushButtonData curData = new PushButtonData("SustainabilityTools", "SustainabilityTools", curAssemblyName, curClassName);
+
+
+            string imgIconLg = curAssemblyFolder + @"icon_ST_large.png";
+            string imgIconSm = curAssemblyFolder + @"\Resources\icon_small.bmp";
+
+            try
+            {
+                curData.LargeImage = new BitmapImage(new Uri(imgIconLg));
+                curData.Image = new BitmapImage(new Uri(imgIconSm));
+            }
+            catch (Exception)
+            {
+                TaskDialog.Show("Error", "Cannot load icon image");
+            }
+
+            // add button to ribbon
+            curPanel.AddItem(curData);
+
             return Result.Succeeded;
         }
 
