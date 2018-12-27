@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Autodesk Inc.")]
 [assembly: AssemblyProduct("SustainabilityTools Revit C# .NET Add-In")]
-[assembly: AssemblyCopyright("Copyright 2017 (C) Jeremy Tammik, Autodesk Inc.")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

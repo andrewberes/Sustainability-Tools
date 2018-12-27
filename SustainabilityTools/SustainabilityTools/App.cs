@@ -30,8 +30,9 @@ namespace SustainabilityTools
 
             try
             {
-                curData.LargeImage = new BitmapImage(new Uri(imgIconLg));
                 curData.Image = new BitmapImage(new Uri(imgIconSm));
+                curData.LargeImage = new BitmapImage(new Uri(imgIconLg));
+                
             }
             catch (Exception)
             {
