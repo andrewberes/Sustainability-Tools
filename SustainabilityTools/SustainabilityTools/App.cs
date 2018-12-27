@@ -25,8 +25,8 @@ namespace SustainabilityTools
             PushButtonData curData = new PushButtonData("SustainabilityTools", "SustainabilityTools", curAssemblyName, curClassName);
 
 
-            string imgIconLg = curAssemblyFolder + @"icon_ST_large.png";
-            string imgIconSm = curAssemblyFolder + @"\Resources\icon_small.bmp";
+            string imgIconLg = curAssemblyFolder + @"\Resources\icon_ST_large.bmp";
+            string imgIconSm = curAssemblyFolder + @"\Resources\icon_ST_small.bmp";
 
             try
             {
