@@ -17,30 +17,52 @@ namespace SustainabilityTools
         public Result OnStartup(UIControlledApplication a)
         {
             RibbonPanel curPanel = a.CreateRibbonPanel("Sustainabilty Stuff");
+            
 
             string curAssemblyName = Assembly.GetExecutingAssembly().Location;
             string curAssemblyFolder = Path.GetDirectoryName(curAssemblyName);
             string curClassName = "SustainabilityTools.Command";
+            string twoClassName = "SustainabilityTools.Command2";
 
-            PushButtonData curData = new PushButtonData("SustainabilityTools", "SustainabilityTools", curAssemblyName, curClassName);
-
-
-            string imgIconLg = curAssemblyFolder + @"\Resources\icon_ST_large.bmp";
-            string imgIconSm = curAssemblyFolder + @"\Resources\icon_ST_small.bmp";
+            PushButtonData pb1Data = new PushButtonData("ViewFilledRegions", "ViewFilledRegions", curAssemblyName, curClassName);
+            pb1Data.ToolTip =  "Generate Filled Regions of the area within Room with access to an exterior view.";
 
             try
             {
-                curData.Image = new BitmapImage(new Uri(imgIconSm));
-                curData.LargeImage = new BitmapImage(new Uri(imgIconLg));
-                
+                BitmapImage pb1Image = new BitmapImage(new Uri("pack://application:,,,/SustainabilityTools;component/Icons/viewFilledRegion.png"));
+
+                pb1Data.LargeImage = pb1Image;
+
             }
             catch (Exception)
             {
                 TaskDialog.Show("Error", "Cannot load icon image");
             }
 
-            // add button to ribbon
-            curPanel.AddItem(curData);
+
+            PushButtonData pb2Data = new PushButtonData("ExportViewSchedule", "ExportViewSchedule", curAssemblyName, twoClassName);
+
+            pb1Data.ToolTip = "Export a schedule to myDesktop with all rooms visible in view, their areas and areas with an exterior view.";
+
+            try
+            {
+
+
+
+                BitmapImage pb2Image = new BitmapImage(new Uri("pack://application:,,,/SustainabilityTools;component/Icons/viewExportSchedule.png"));
+
+                pb2Data.LargeImage = pb2Image;
+
+            }
+            catch (Exception)
+            {
+                TaskDialog.Show("Error", "Cannot load icon image");
+            }
+
+
+            // add buttons to ribbon
+            curPanel.AddItem(pb1Data);
+            curPanel.AddItem(pb2Data);
 
             return Result.Succeeded;
         }
