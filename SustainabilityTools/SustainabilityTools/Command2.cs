@@ -39,18 +39,18 @@ namespace SustainabilityTools
 
             //TaskDialog.Show("Test", "the button works without the script");
 
-            
-            
-            IEnumerable<Element> regOccupyRoomCollector = roomCollector.Where(a => a.LookupParameter("LEED Occupancy Type").AsString() == "REGULARLY OCCUPIED SPACES (CORE LEARNING)" ||
-                                                                                   a.LookupParameter("LEED Occupancy Type").AsString() == "REGULARLY OCCUPIED SPACES (ANCILLARY LEARNING)" ||
-                                                                                   a.LookupParameter("LEED Occupancy Type").AsString() == "OTHER REGULARLY OCCUPIED SPACES");
+            IEnumerable<Element> regOccupyRoomCollector = roomCollector;
+
+            //IEnumerable<Element> regOccupyRoomCollector = roomCollector.Where(a => a.LookupParameter("LEED Occupancy Type").AsString() == "REGULARLY OCCUPIED SPACES (CORE LEARNING)" ||
+            //a.LookupParameter("LEED Occupancy Type").AsString() == "REGULARLY OCCUPIED SPACES (ANCILLARY LEARNING)" ||
+            //a.LookupParameter("LEED Occupancy Type").AsString() == "OTHER REGULARLY OCCUPIED SPACES");
 
             // Get all filled regions in curView
             FilteredElementCollector fillCollector = new FilteredElementCollector(curDoc, curView.Id);
 
             fillCollector.OfClass(typeof(FilledRegion));
 
-            TaskDialog.Show("test", fillCollector.Count().ToString() + " Filled Regions -> " + regOccupyRoomCollector.Count().ToString() + " Reg. Occupied Rooms of " + roomCollector.Count().ToString() + " total Rooms");
+            TaskDialog.Show("test", fillCollector.Count().ToString() + " Filled Regions -> " + roomCollector.Count().ToString() + " total Rooms");
 
 
             string pathDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -65,6 +65,9 @@ namespace SustainabilityTools
             string delimter = ",";
 
             List<string[]> output = new List<string[]>();
+
+
+            output.Add(new String[] { "Room Name", "Room Number", "Area", "Area with View", "LEED Occupancy Type" });
 
             foreach (Room curRoom in regOccupyRoomCollector)
             {
@@ -96,10 +99,13 @@ namespace SustainabilityTools
                     }
 
                 }
-                String rmName = curRoom.Name.ToString();
+
+
+                String rmName = curRoom.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
                 String rmNumber = curRoom.Number.ToString();
                 String rmArea = curRoom.Area.ToString();
-                output.Add(new String[] { rmName, rmNumber, rmArea, rmViewArea });
+                String rmOccType = curRoom.LookupParameter("LEED Occupancy Type").AsString();
+                output.Add(new String[] { rmName, rmNumber, rmArea, rmViewArea, rmOccType });
 
 
             }
@@ -116,11 +122,7 @@ namespace SustainabilityTools
                     writer.WriteLine(string.Join(delimter, output[index]));
                 }
             }
-
-
             
-
-
 
             return Result.Succeeded;
         }

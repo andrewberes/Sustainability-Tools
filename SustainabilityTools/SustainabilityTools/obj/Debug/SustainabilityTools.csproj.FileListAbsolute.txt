@@ -4,3 +4,4 @@ C:\Users\Andrew Beres\Documents\Sustainability Tools\SustainabilityTools\Sustain
 C:\Users\Andrew Beres\Documents\Sustainability Tools\SustainabilityTools\SustainabilityTools\obj\Debug\SustainabilityTools.csproj.CoreCompileInputs.cache
 C:\Users\Andrew Beres\Documents\Sustainability Tools\SustainabilityTools\SustainabilityTools\obj\Debug\SustainabilityTools.dll
 C:\Users\Andrew Beres\Documents\Sustainability Tools\SustainabilityTools\SustainabilityTools\obj\Debug\SustainabilityTools.pdb
+C:\Users\Andrew Beres\Documents\Sustainability Tools\SustainabilityTools\SustainabilityTools\obj\Debug\SustainabilityTools.csprojAssemblyReference.cache

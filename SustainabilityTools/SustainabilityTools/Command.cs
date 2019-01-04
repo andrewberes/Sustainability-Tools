@@ -469,8 +469,7 @@ namespace SustainabilityTools
             IList<ReferenceWithContext> refs = intersector.Find(rayStart, wallDirection);
 
             List<XYZ> pointList = new List<XYZ>(refs.Select<ReferenceWithContext, XYZ>(r => r.GetReference().GlobalPoint));
-
-            //TaskDialog.Show("title", pointList.Count.ToString());
+            
 
             if (pointList.Count() >= 4)
             {
